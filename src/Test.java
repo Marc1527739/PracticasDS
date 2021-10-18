@@ -4,7 +4,7 @@ public class Test {
 
   }
   public void testCreateProject(){
-    Project p=new Project("root",null);
+    Project p=new Project("root");
     assert p.getParentProject()==null:"Error, this project should be the root project";
     p.changeState();
     assert !p.isActive():"Error, project should be active after being created";
@@ -17,7 +17,7 @@ public class Test {
 
   public void testAddActivity(){
     // We first create project and then we add to that project an Activity
-    Project p = new Project("test",null);
+    Project p = new Project("test");
     Task t = new Task("testtask");
     p.addActivity(t);
     if(p.getActivities().isEmpty())

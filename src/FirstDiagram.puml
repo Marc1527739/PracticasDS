@@ -71,6 +71,7 @@ class Clock{
     +startTimer():void
 }
 Application "1"<--> "1"Project: "rootProject"
+Application"1"<-->"1"Clock:"clock"
 Project --|> Activity
 Project "1"*-->"*"Activity: "activities "
 Task --|> Activity

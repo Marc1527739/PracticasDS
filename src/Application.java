@@ -6,20 +6,31 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-  private static Project rootProject=new Project("root",null);
+  private static Project rootProject=new Project("root");
+  private static Clock clock= new Clock();
   public static void main(String[] args)
   {
+    testClock();
     testCreateHierarchy();
-
   }
 
+  public static void testClock()
+  {
+    Interval i1 = new Interval();
+    Interval i2 = new Interval();
+    Interval i3 = new Interval();
+    clock.addObserver(i1);
+    clock.addObserver(i2);
+    clock.addObserver(i3);
+    clock.startTimer();
+  }
   public static void testCreateHierarchy()
   {
     // TOP LEVEL(0)
-    Project softwareDesign = new Project("software design",null);
-    Project softwareTesting = new Project("software testing",null);
-    Project databases = new Project("databases",null);
-    Project tasktransportation = new Project("task transportation", null);
+    Project softwareDesign = new Project("software design");
+    Project softwareTesting = new Project("software testing");
+    Project databases = new Project("databases");
+    Project tasktransportation = new Project("task transportation");
     rootProject.addActivity(softwareDesign);
     rootProject.addActivity(softwareTesting);
     rootProject.addActivity(databases);
@@ -32,12 +43,12 @@ public class Application {
     softwareDesign.addActivity(projectTimeTracker);
 
     // LEVEL 2
-    Task firstList = new Task("first list",problems);
-    Task secondList = new Task("second list",problems);
+    Task firstList = new Task("first list");
+    Task secondList = new Task("second list");
     problems.addActivity(firstList);
     problems.addActivity(secondList);
-    Task readHandout = new Task("read handout",projectTimeTracker);
-    Task firstMilestone = new Task("first milestone",projectTimeTracker);
+    Task readHandout = new Task("read handout");
+    Task firstMilestone = new Task("first milestone");
     projectTimeTracker.addActivity(readHandout);
     projectTimeTracker.addActivity(firstMilestone);
     //PRINTING
